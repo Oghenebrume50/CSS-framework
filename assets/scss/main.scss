@@ -24,11 +24,12 @@ $gutter-width: 1%;  // Preference based : Adds left & right padding to columns
   padding-right: $value/2;
 }
 
-@mixin container {
-  max-width: 940px;
+@mixin container($width) {
+  max-width: $width;
   margin: 0 auto;
 }
 
 @mixin responsive-img {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
