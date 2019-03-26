@@ -1,27 +1,35 @@
-@import 'reset';
+@import '_reset';
 
-$column-width: 60px;
-$gutter-width: 20px;
+/*
+=================================================
+  GRID
+=================================================
+*/
+
+$column-width: 8.33%; // 12 Columns : 100/12 = 8.33
+$gutter-width: 1%;  // Preference based : Adds left & right padding to columns
+
+@mixin grid-row {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
 
 @mixin grid-unit($span) {
-    float: left;
-    margin-right: $gutter-width;
-    width: ($column-width * $span) + ($gutter-width * ($span - 1));
+  width: $column-width*$span;
 }
 
-@mixin img-size {
-    width: 100%;
+@mixin grid-gutter($value: $gutter-width) {
+  padding-left: $value/2;
+  padding-right: $value/2;
 }
 
-.container {
-    @include grid-unit(12);
-    float: none;
-    margin: 0 auto;
+@mixin container($width) {
+  max-width: $width;
+  margin: 0 auto;
 }
-  
-.main-content {
-    @include grid-unit(6);
-    img {
-        @include img-size;
-    }
+
+@mixin responsive-img {
+  max-width: 100%;
+  height: auto;
 }
